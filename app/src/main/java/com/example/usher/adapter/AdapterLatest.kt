@@ -18,7 +18,7 @@ class AdapterLatest(private val context: Context) :
     private var itemList: List<Latest> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var itemView =
+        val itemView =
             LayoutInflater.from(parent.context).inflate(
                 R.layout.item_latest,
                 parent,

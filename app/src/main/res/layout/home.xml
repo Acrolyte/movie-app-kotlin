@@ -11,57 +11,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="14dp">
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="14dp"
+            android:orientation="vertical">
 
-            <!--<androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/carousel"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="1dp"
-                android:orientation="horizontal"
-                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />-->
-
-            <!--<com.synnapps.carouselview.CarouselView
+            <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/carousel"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
-                app:fillColor="@color/white"
-                app:pageColor="#000000"
-                app:radius="6dp"
-                app:slideInterval="3000"
-                app:autoPlay="true"/>-->
-
-            <com.smarteist.autoimageslider.SliderView
-                android:id="@+id/carousel"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                app:sliderAnimationDuration="600"
-                app:sliderAutoCycleDirection="back_and_forth"
-                app:sliderAutoCycleEnabled="true"
-                app:sliderIndicatorAnimationDuration="600"
-                app:sliderIndicatorGravity="center_horizontal|bottom"
-                app:sliderIndicatorMargin="15dp"
-                app:sliderIndicatorOrientation="horizontal"
-                app:sliderIndicatorPadding="3dp"
-                app:sliderIndicatorRadius="2dp"
-                app:sliderIndicatorSelectedColor="#5A5A5A"
-                app:sliderIndicatorUnselectedColor="#FFF"
-                app:sliderScrollTimeInSec="2"
-                app:sliderStartAutoCycle="true" />
-
+                android:foregroundGravity="center" />
 
             <TextView
                 android:id="@+id/text01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/carousel"
                 android:text="Trending"
                 android:textColor="@color/yellow"
                 android:textSize="24sp"
@@ -71,7 +38,23 @@
                 android:id="@+id/trending"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:layout_below="@+id/text01"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+            <TextView
+                android:id="@+id/text02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Top Rated"
+                android:textColor="@color/yellow"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/topRated"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
                 android:layout_marginTop="1dp"
                 android:orientation="horizontal"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
@@ -80,7 +63,6 @@
                 android:id="@+id/text03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/trending"
                 android:text="Now Playing"
                 android:textColor="@color/yellow"
                 android:textSize="24sp"
@@ -99,56 +81,6 @@
                 android:id="@+id/text04"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/nowPlaying"
-                android:text="Popular"
-                android:textColor="@color/yellow"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <!--<com.google.android.material.card.MaterialCardView
-                android:id="@id/popularCard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/teal_200"
-                android:clickable="false">
-
-
-
-            </com.google.android.material.card.MaterialCardView>-->
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/popular"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_below="@+id/text04"
-                android:layout_marginTop="1dp"
-                android:orientation="horizontal"
-                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
-
-            <TextView
-                android:id="@+id/text05"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/popular"
-                android:text="Top Rated"
-                android:textColor="@color/yellow"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/topRated"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_below="@+id/text05"
-                android:layout_marginTop="1dp"
-                android:orientation="horizontal"
-                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
-
-            <TextView
-                android:id="@+id/text06"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/topRated"
                 android:text="Upcoming"
                 android:textColor="@color/yellow"
                 android:textSize="24sp"
@@ -158,13 +90,29 @@
                 android:id="@+id/upcoming"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:layout_below="@+id/text06"
                 android:layout_marginTop="1dp"
                 android:orientation="horizontal"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
                 tools:listitem="@layout/item_view" />
 
-        </RelativeLayout>
+            <TextView
+                android:id="@+id/text05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Popular"
+                android:textColor="@color/yellow"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/popular"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+        </LinearLayout>
 
     </ScrollView>
 
@@ -188,10 +136,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/teal_200"
+        android:backgroundTint="@color/yellow"
         android:clickable="true"
         android:focusable="true"
-        android:tint="@color/white"
+        app:borderWidth="0dp"
         app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
         app:layout_constraintEnd_toEndOf="@+id/floatingActionButton"
         app:srcCompat="@drawable/ic_search" />

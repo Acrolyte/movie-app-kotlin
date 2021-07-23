@@ -1,33 +1,28 @@
 package com.example.usher.adapter
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import coil.ImageLoader
-import coil.request.ImageRequest
-import coil.request.SuccessResult
 import com.bumptech.glide.Glide
 import com.example.usher.R
 import com.example.usher.call.MoviesAPI.Companion.backdrop
 import com.example.usher.models.get_popular_movie.Result
-import kotlinx.coroutines.*
+import com.example.usher.util.InternetConnectivity
+import com.google.android.material.snackbar.Snackbar
 
 
 class AdapterPopular(private val context: Context) :
     RecyclerView.Adapter<AdapterPopular.ViewHolder>() {
 
     private var itemList: List<Result> = emptyList()
-//    var home = Home()
+
+    //    var home = Home()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var itemView =
             LayoutInflater.from(parent.context).inflate(
@@ -40,15 +35,20 @@ class AdapterPopular(private val context: Context) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val entity = itemList[position]
-        val url = backdrop+entity.posterPath
+        val url = backdrop + entity.posterPath
         Glide.with(context).load(url).into(holder.newsImage)
         holder.newsTitle.text = entity.title
 //        addDataDataBase(entity.id,url,entity.posterPath,entity.title)
 
         holder.itemView.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putInt("id", itemList[position].id)
-            it.findNavController().navigate(R.id.details, bundle)
+            if (InternetConnectivity.isNetworkAvailable(context) == true) {
+                val bundle = Bundle()
+                bundle.putInt("id", itemList[position].id)
+                it.findNavController().navigate(R.id.action_home_to_details, bundle)
+            } else {
+                Snackbar.make(it, "Please check your Internet connection!!", Snackbar.LENGTH_SHORT)
+                    .show()
+            }
         }
     }
 
@@ -62,7 +62,8 @@ class AdapterPopular(private val context: Context) :
         val newsTitle: TextView = itemView.findViewById(R.id.viewTitle)
 
     }
-//    fun addDataDataBase(id : Int, url: String, posterpath : String,title: String){
+
+    //    fun addDataDataBase(id : Int, url: String, posterpath : String,title: String){
 //        val scope = CoroutineScope(CoroutineName("AddDataScope"))
 //        scope.launch {
 //            val result : ResultData = ResultData(id,posterpath,title,makeBmap(url))

@@ -8,17 +8,21 @@
         android:id="@+id/home"
         android:name="com.example.usher.view.fragment.Home"
         android:label="home"
-        tools:layout="@layout/home" >
+        tools:layout="@layout/home">
         <action
             android:id="@+id/action_home_to_search"
             app:destination="@id/search"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_home_to_details"
-            app:destination="@id/details" />
+            app:destination="@id/details"
+            app:enterAnim="@anim/slide_in_top"
+            app:exitAnim="@anim/slide_out_bottom"
+            app:popEnterAnim="@anim/slide_in_bottom"
+            app:popExitAnim="@anim/slide_out_top" />
     </fragment>
     <fragment
         android:id="@+id/search"
@@ -28,15 +32,26 @@
     <fragment
         android:id="@+id/details"
         android:name="com.example.usher.view.fragment.MovieDetails"
-        android:label="details"
-        tools:layout="@layout/details" >
+        android:label="Movie Details"
+        tools:layout="@layout/details">
         <action
             android:id="@+id/action_details_to_castDetails"
-            app:destination="@id/castDetails" />
+            app:destination="@id/castDetails"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_details_self"
+            app:destination="@id/details"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/castDetails"
         android:name="com.example.usher.view.fragment.CastDetails"
-        android:label="details_cast"
+        android:label="Cast Details"
         tools:layout="@layout/details_cast" />
 </navigation>

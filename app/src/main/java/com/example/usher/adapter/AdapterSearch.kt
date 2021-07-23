@@ -1,18 +1,12 @@
 package com.example.usher.adapter
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.graphics.createBitmap
 import androidx.recyclerview.widget.RecyclerView
-import coil.ImageLoader
-import coil.request.ImageRequest
-import coil.request.SuccessResult
 import com.bumptech.glide.Glide
 import com.example.usher.R
 import com.example.usher.call.MoviesAPI
@@ -40,7 +34,7 @@ class AdapterSearch(private val context: Context) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = itemList[position]
-        val url = MoviesAPI.backdrop +item.posterPath
+        val url = MoviesAPI.backdrop + item.posterPath
         Glide.with(context).load(url).into(holder.newsImage)
 
         holder.newstext.text = item.title

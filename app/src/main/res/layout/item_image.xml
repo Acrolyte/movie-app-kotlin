@@ -15,7 +15,6 @@
         android:id="@+id/castImagesUnit"
         android:layout_width="130dp"
         android:layout_height="200dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/test" />
+        android:scaleType="centerCrop" />
 
 </com.google.android.material.card.MaterialCardView>

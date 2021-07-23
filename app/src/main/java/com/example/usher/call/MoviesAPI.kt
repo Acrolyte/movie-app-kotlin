@@ -26,6 +26,11 @@ interface MoviesAPI {
         const val backdrop: String = "https://image.tmdb.org/t/p/w500"
         const val movieId: Int = 497698
         const val personId: Int = 1245
+        const val image1: String = "https://image.tmdb.org/t/p/w500/dq18nCTTLpy9PmtzZI6Y2yAgdw5.jpg"
+        const val image2: String = "https://image.tmdb.org/t/p/w500/wjQXZTlFM3PVEUmKf1sUajjygqT.jpg"
+        const val image3: String = "https://image.tmdb.org/t/p/w500/xXHZeb1yhJvnSHPzZDqee0zfMb6.jpg"
+        const val image4: String = "https://image.tmdb.org/t/p/w500/z2UtGA1WggESspi6KOXeo66lvLx.jpg"
+
     }
 
     @GET("/3/trending/all/week")
@@ -33,6 +38,14 @@ interface MoviesAPI {
         @Query("api_key")
         api_key: String = apiKey
     ): Call<Trending>
+
+    @GET("/3/movie/now_playing")
+    fun getLatest(
+        @Query("api_key")
+        api_key: String = apiKey,
+        @Query("language")
+        language: String = "en-US"
+    ): Call<Latest>
 
     @GET("/3/movie/now_playing")
     fun getNowPlaying(
@@ -94,7 +107,7 @@ interface MoviesAPI {
         movie_id: Int = movieId,
         @Query("api_key")
         api_key: String = apiKey
-    ) : Call<MovieDetails>
+    ): Call<MovieDetails>
 
     @GET("/3/movie/{movie_id}/credits")
     fun getMovieCredits(
@@ -102,7 +115,7 @@ interface MoviesAPI {
         movie_id: Int = movieId,
         @Query("api_key")
         api_key: String = apiKey
-    ) : Call<MovieCredits>
+    ): Call<MovieCredits>
 
     @GET("/3//movie/{movie_id}/similar")
     fun getSimilarMovies(
@@ -110,7 +123,7 @@ interface MoviesAPI {
         movie_id: Int = movieId,
         @Query("api_key")
         api_key: String = apiKey
-    ) : Call<SimilarMovies>
+    ): Call<SimilarMovies>
 
     @GET("/3//person/{person_id}")
     fun getPersonDetails(
@@ -118,7 +131,7 @@ interface MoviesAPI {
         person_id: Int = personId,
         @Query("api_key")
         api_key: String = apiKey
-    ) : Call<PersonDetails>
+    ): Call<PersonDetails>
 
     @GET("/3//person/{person_id}/images")
     fun getPersonImages(
@@ -126,5 +139,5 @@ interface MoviesAPI {
         person_id: Int = personId,
         @Query("api_key")
         api_key: String = apiKey
-    ) : Call<PersonImages>
+    ): Call<PersonImages>
 }

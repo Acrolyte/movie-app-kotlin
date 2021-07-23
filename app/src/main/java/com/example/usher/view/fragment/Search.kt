@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.usher.adapter.AdapterSearch
 import com.example.usher.databinding.SearchBinding
 import com.example.usher.viewmodel.ViewModel
-import androidx.appcompat.widget.SearchView
-import androidx.recyclerview.widget.GridLayoutManager
-import coil.ImageLoader
 
 class Search : Fragment(), SearchView.OnQueryTextListener {
 
@@ -31,8 +31,9 @@ class Search : Fragment(), SearchView.OnQueryTextListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ViewModel::class.java)
 
+        val searchView = binding.svSearchView
+        viewModel = ViewModelProvider(this).get(ViewModel::class.java)
 
         val searchRecyclerView = binding.rvSearchResults
         searchRecyclerView.layoutManager =
@@ -44,7 +45,8 @@ class Search : Fragment(), SearchView.OnQueryTextListener {
             binding.pbSearch.visibility = ProgressBar.GONE
             adapterSearch.setData(it.results)
         })
-        binding.svSearchView.setOnQueryTextListener(this)
+        searchView.setOnClickListener { searchView.isIconified = false }
+        searchView.setOnQueryTextListener(this)
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
@@ -62,5 +64,14 @@ class Search : Fragment(), SearchView.OnQueryTextListener {
         return false
     }
 
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+    }
 }
 

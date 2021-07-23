@@ -23,12 +23,13 @@ import retrofit2.Response
 
 class Repository constructor(val application: Application) {
 
+    val carouselData = MutableLiveData<Upcoming>()
     val playingData = MutableLiveData<NowPlaying>()
     val popularData = MutableLiveData<Popular>()
     val topData = MutableLiveData<TopRated>()
     val upcomingData = MutableLiveData<Upcoming>()
     val trendingData = MutableLiveData<Trending>()
-    val latestData = MutableLiveData<List<Latest>>()
+    val latestData = MutableLiveData<Latest>()
     val searchData = MutableLiveData<SearchResult>()
     val moviesCast = MutableLiveData<MovieCredits>()
     val similarMovies = MutableLiveData<SimilarMovies>()
@@ -54,6 +55,47 @@ class Repository constructor(val application: Application) {
                     val pop = play.results
                     trendingData.value = Trending(pop)
                 }
+            }
+        })
+    }
+
+    /*fun getCarousel() {
+
+        val retrofitService = RetrofitInstance.getClient(application)
+        val callAPI = retrofitService.getUpcoming()
+
+        callAPI.enqueue(object : Callback<Upcoming> {
+            override fun onFailure(call: Call<Upcoming>, t: Throwable) {
+                Log.d("onFailure", "onFailure: ${t.message}")
+                Toast.makeText(application, "Error", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<Upcoming>, response: Response<Upcoming>) {
+                Log.d("nowPlaying", "onResponse: $response")
+                val play = response.body()
+                if (play != null) {
+                    val pop = play.results
+                    carouselData.value = Upcoming(pop)
+                }
+            }
+        })
+    }*/
+
+    fun getLatest() {
+
+        val retrofitService = RetrofitInstance.getClient(application)
+        val callAPI = retrofitService.getLatest()
+
+        callAPI.enqueue(object : Callback<Latest> {
+            override fun onFailure(call: Call<Latest>, t: Throwable) {
+                //Log.d("Repo", "onFailure: ${t.message}")
+                Toast.makeText(application, "Error", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<Latest>, response: Response<Latest>) {
+                Log.d("detailsResponse", "onResponse: $response")
+                val play = response.body()
+                latestData.value = play
             }
         })
     }

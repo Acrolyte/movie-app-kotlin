@@ -13,6 +13,8 @@ import com.bumptech.glide.Glide
 import com.example.usher.R
 import com.example.usher.call.MoviesAPI.Companion.backdrop
 import com.example.usher.models.get_top_rated_movies.Result
+import com.example.usher.util.InternetConnectivity
+import com.google.android.material.snackbar.Snackbar
 
 
 class AdapterTop(
@@ -37,9 +39,14 @@ class AdapterTop(
         holder.newsTitle.text = entity.title
 
         holder.itemView.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putInt("id", itemList[position].id)
-            it.findNavController().navigate(R.id.details, bundle)
+            if (InternetConnectivity.isNetworkAvailable(context) == true) {
+                val bundle = Bundle()
+                bundle.putInt("id", itemList[position].id)
+                it.findNavController().navigate(R.id.action_home_to_details, bundle)
+            } else {
+                Snackbar.make(it, "Please check your Internet connection!!", Snackbar.LENGTH_SHORT)
+                    .show()
+            }
         }
     }
 

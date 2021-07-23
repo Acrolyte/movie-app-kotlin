@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
     android:padding="10dp"
     tools:context=".view.fragment.Search">
 
-   <androidx.appcompat.widget.SearchView
-       android:theme="@style/ThemeOverlay.SearchView"
-       android:id="@+id/sv_search_View"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:background="@drawable/custom_search"
-       android:backgroundTint="@color/nero"
-       app:searchIcon="@drawable/ic_search"
-       android:elevation="100dp"/>
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/sv_search_View"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_search"
+        android:backgroundTint="@color/nero"
+        android:elevation="100dp"
+        android:theme="@style/ThemeOverlay.SearchView"
+        app:searchIcon="@drawable/ic_search" />
 
-   <ProgressBar
-       android:layout_marginTop="10dp"
-       android:id="@+id/pb_search"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:visibility="gone"
-       android:layout_below="@+id/sv_search_View"/>
+    <ProgressBar
+        android:id="@+id/pb_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sv_search_View"
+        android:layout_marginTop="10dp"
+        android:visibility="gone" />
 
-   <androidx.recyclerview.widget.RecyclerView
-       android:id="@+id/rv_search_results"
-       android:layout_marginTop="10dp"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:layout_below="@id/sv_search_View"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_search_results"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/sv_search_View"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>

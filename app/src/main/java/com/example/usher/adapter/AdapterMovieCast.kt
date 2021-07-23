@@ -38,7 +38,7 @@ class AdapterMovieCast(private val context: Context) :
         holder.itemView.setOnClickListener {
             val bundle = Bundle()
             bundle.putInt("id", itemList[position].id)
-            it.findNavController().navigate(R.id.castDetails, bundle)
+            it.findNavController().navigate(R.id.action_details_to_castDetails, bundle)
         }
     }
 

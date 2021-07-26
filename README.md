@@ -45,6 +45,7 @@ gradlew installDebug
 
 ## Contributors
 
+* [Aditya](https://github.com/ydasc815)
 * [Yuvraj](https://github.com/reyyuvraj)
 * [Arpit](https://github.com/Acrolyte)
 
